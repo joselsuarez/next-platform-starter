@@ -18,7 +18,7 @@ const installEvent = () => {
   const installPromp = () => {
     console.log('antes beforeinstallprompt');
     self.addEventListener('beforeinstallprompt', e => {
-      e.prompt();
+      e.prompt(); 
       console.log('beforeinstallprompt');
     });
   };

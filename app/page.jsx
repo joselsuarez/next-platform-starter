@@ -24,7 +24,7 @@ export default function Page() {
     useEffect(() => {
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker
-          .register('/service-worker.js', { scope: '/docs' })
+          .register('/service-worker.js', { scope: '/' })
           .then((registration) => console.log('scope is: ', registration.scope));
       }
     }, []);
@@ -32,9 +32,11 @@ export default function Page() {
     useEffect(() => {
   
   
+      console.log("-beforeinstallprompt");
       window.addEventListener("beforeinstallprompt", (event) => {
+        console.log("beforeinstallprompt", event); 
         event.preventDefault();
-        installPrompt = event;
+        installPrompt = event; 
       });
   
       initDB();
@@ -85,6 +87,9 @@ export default function Page() {
   
     
     async function installApp() {
+      console.log(installPrompt);
+      console.log(window.location.href);
+      
       if (!installPrompt) {
         return;
       }

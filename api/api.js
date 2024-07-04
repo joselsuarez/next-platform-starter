@@ -1,4 +1,4 @@
-
+const baseUrl = window.location.href;
 export function apiPost() {
     const requestOptions = {
         method: 'POST',
@@ -19,7 +19,7 @@ export function apiGet() {
 }
 
 export function apiGetLocal() {
-    fetch('http://localhost:8888/api/user')
+    fetch(baseUrl + 'api/user')
         .then(response => response.json())
         .then(data => console.log('apiGetLocal', data));    
 
@@ -31,14 +31,14 @@ export function apiPostLocal() {
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({ id: '1', name: 'jose' })
     };
-    fetch('http://localhost:8888/api/user',requestOptions)
+    fetch(baseUrl + 'api/user',requestOptions)
         .then(response => response.json())
         .then(data => console.log('apiPostLocal', data));    
 
 }
 
 export function apiPostLocalAlt() {
-    fetch("http://localhost:8888/api/user", {
+    fetch(baseUrl + "api/user", {
         method: "post",
         headers: {
           'Accept': 'application/json',
